@@ -1,4 +1,4 @@
-ballpoint
+inkwell
 =========
 
-Ballpoint is a Stylus theme framework, busting a proverbial (pen) cap in the face of complicated design.
+Inkwell is a Stylus theme framework, built using [grip](https://github.com/rosshadden/grip) for structure and [ink](https://github.com/rosshadden/ink) for design.
