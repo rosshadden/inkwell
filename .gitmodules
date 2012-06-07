@@ -1,3 +1,6 @@
 [submodule "ink"]
 	path = ink
 	url = git@github.com:rosshadden/ink.git
+[submodule "grip"]
+	path = grip
+	url = git@github.com:rosshadden/grip.git
