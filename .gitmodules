@@ -4,3 +4,6 @@
 [submodule "grip"]
 	path = grip
 	url = git@github.com:rosshadden/grip.git
+[submodule "nib"]
+	path = nib
+	url = https://github.com/visionmedia/nib.git
