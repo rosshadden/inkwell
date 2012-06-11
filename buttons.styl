@@ -1,4 +1,30 @@
-#test
-  & > .bp-button
-    border 1px solid #669
-    background #369
+buttonize(color)
+  colorHighlight = lighten(color, 20%)
+  isDark = dark(color)
+
+  background-color colorHighlight
+  background-image linear-gradient(top, colorHighlight, color)
+  background-repeat repeat-x
+  filter s("progid:DXImageTransform.Microsoft.gradient(startColorstr='%s', endColorstr='%s', GradientType=0)", colorHighlight, color)
+  border-color color color darken(color, 15%)
+  border-color rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.5)
+  filter unquote("progid:DXImageTransform.Microsoft.gradient(enabled = false)")
+  color #fff if isDark
+  color #333 if not isDark
+  text-shadow 0 1px 1px rgba(0, 0, 0, 0.75) if isDark
+  text-shadow 0 1px 1px rgba(255, 255, 255, 0.75) if not isDark
+  font-weight bold
+
+  &:hover,
+  &:active,
+  &.active,
+  &.disabled,
+  &[disabled]
+    background-color color
+
+  &:active,
+  &.active
+    background-color colorHighlight
+
+  &:hover
+    color @color
