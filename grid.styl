@@ -24,17 +24,17 @@ for col in 1..$numColumns
   .offset{col}
     offset(col)
 
-  input.span{col}
+  input.span{col},
   textarea.span{col}
     input(col)
 
 //  FORMS
-input[class*="span"]
-select[class*="span"]
+input[class*="span"],
+select[class*="span"],
 textarea[class*="span"]
   float: none
   margin-left 0
 
-input
+input,
 textarea
   margin-left 0
