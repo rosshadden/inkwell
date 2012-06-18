@@ -1,11 +1,21 @@
-.ink-button
-  buttonize(#999)
+theme-buttons(scheme)
+  .btn
+    buttonize()
 
-  &.primary
-    button-colorize(#933)
+  a.btn:hover
+    color #333
+    text-decoration none
 
-  &.secondary
-    button-colorize(#339)
+  .btn-primary
+    button-paint(scheme[0])
 
-  &.tertiary
-    button-colorize(#339)
+  .btn-secondary
+    button-paint(scheme[1])
+
+  .btn-tertiary
+    button-paint(scheme[2])
+
+  .btn-mini
+    padding 2px 6px
+    font-size 11px
+    line-height 14px
