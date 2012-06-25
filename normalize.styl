@@ -33,7 +33,7 @@ video
 // -------------------------
 
 audio:not([controls])
-    display none
+  display none
 
 
 // Base settings
@@ -41,11 +41,11 @@ audio:not([controls])
 
 html
   font-size 100%
-  vendor(text-size-adjust, 100%)
+  vendor('text-size-adjust', 100%)
 
 // Focus states
 a:focus
-  .tab-focus()
+  tab-focus()
 
 // Hover & Active
 a:hover,
@@ -115,7 +115,7 @@ input[type="submit"]
   -webkit-appearance button // Style clickable inputs in iOS
 
 input[type="search"] // Appearance in Safari/Chrome
-          box-sizing content-box
+  box-sizing content-box
   -webkit-appearance textfield
 
 input[type="search"]::-webkit-search-decoration,
