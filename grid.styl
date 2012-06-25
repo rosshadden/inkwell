@@ -1,6 +1,6 @@
 generate-grid()
   .row
-    margin-left -($gutter)
+    margin-left -($gridGutterWidth)
     *zoom 1
 
     &:before,
@@ -13,12 +13,12 @@ generate-grid()
 
   [class*="span"]
     float left
-    margin-left $gutter
+    margin-left $gridGutterWidth
 
   .container
-    width $totalWidth
+    width $gridRowWidth
 
-  for col in 1..$numColumns
+  for col in 1..$gridColumns
     .span{col}
       column(col)
 
