@@ -2,7 +2,7 @@
 
 // Button styles (move to Grip?)
 // ------------------
-buttonize(color = #dcdcdc, radius = 4px)
+buttonize(color = #ddd, radius = 4px)
   button-paint(color)
 
   display inline-block
@@ -37,7 +37,8 @@ button-paint(color, color2 = color, text = false)
   isDark = dark(color)
 
   if color2 is color
-    colorHighlight = desaturate(color + 10%, 10%)
+    colorHighlight = desaturate(color + 10%, 10%) if isDark
+    colorHighlight = saturate(color - 10%, 10%) unless isDark
   else
     colorHighlight = color2
 
@@ -51,16 +52,19 @@ button-paint(color, color2 = color, text = false)
     color text
     text-shadow 0 1px 1px rgba(invert(text), 0.75)
   else
-    color #fff if isDark
-    color #333 if not isDark
-    text-shadow 0 1px 1px rgba(0, 0, 0, 0.75) if isDark
-    text-shadow 0 1px 1px rgba(255, 255, 255, 0.75) if not isDark
+    if isDark
+      color #fff
+      text-shadow 0 1px 1px rgba(0, 0, 0, 0.75)
+    else
+      color #333
+      text-shadow 0 1px 1px rgba(255, 255, 255, 0.75)
 
   &:hover,
   &.disabled,
   &[disabled]
     background-color colorHighlight
 
+  &:hover,
   &.hover
     color @color
 
@@ -73,10 +77,10 @@ generate-buttons(scheme)
   .btn
     buttonize()
 
-  // Button Sizes
-  // --------------------------------------------------
+    // Button Sizes
+    // --------------------------------------------------
 
-  // Large
+    // Large
   .btn-large
     padding 9px 14px
     font-size $baseFontSize + 2px
