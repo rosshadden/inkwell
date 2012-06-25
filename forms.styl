@@ -71,6 +71,9 @@ generate-forms()
   textarea
     height auto
 
+  select
+    border-radius $inputBorderRadius
+
   // Everything else
   textarea,
   input[type="text"],
@@ -319,6 +322,7 @@ generate-forms()
   .input-prepend,
   .input-append
     margin-bottom 5px
+
     input,
     select,
     .uneditable-input
