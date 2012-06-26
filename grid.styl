@@ -1,43 +1,43 @@
 generate-grid()
-  .row
-    margin-left -($gridGutterWidth)
-    *zoom 1
+    .row
+        margin-left -($gridGutterWidth)
+        *zoom 1
 
-    &:before,
-    &:after
-      display table
-      content ""
+        &:before,
+        &:after
+            display table
+            content ""
 
-    &:after
-      clear both
+        &:after
+            clear both
 
-  [class*="span"]
-    float left
-    margin-left $gridGutterWidth
+    [class*="span"]
+        float left
+        margin-left $gridGutterWidth
 
-  .container
-    width $gridRowWidth
+    .container
+        width $gridRowWidth
 
-  for col in 1..$gridColumns
-    .span{col}
-      column(col)
+    for col in 1..$gridColumns
+        .span{col}
+            column(col)
 
-    .offset{col}
-      offset(col)
+        .offset{col}
+            offset(col)
 
-    input.span{col},
-    textarea.span{col},
-    .uneditable-input.span{col}
-      input(col)
+        input.span{col},
+        textarea.span{col},
+        .uneditable-input.span{col}
+            input(col)
 
-    table
-      .span{col}
-        tableColumns(col)
+        table
+            .span{col}
+                tableColumns(col)
 
-  //  FORMS
-  input[class*="span"],
-  select[class*="span"],
-  textarea[class*="span"],
-  .uneditable-input[class*="span"]
-    float: none
-    margin-left 0
+    //  FORMS
+    input[class*="span"],
+    select[class*="span"],
+    textarea[class*="span"],
+    .uneditable-input[class*="span"]
+        float: none
+        margin-left 0
