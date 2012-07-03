@@ -3,142 +3,142 @@
 // Button styles (move to Grip?)
 // ------------------
 buttonize(color = #ddd, radius = 4px)
-  button-paint(color)
+    button-paint(color)
 
-  display inline-block
-  margin-bottom 0 // For input.btn
-  padding 4px 10px 4px
-  border-radius radius
-  background-repeat repeat-x
-  box-shadow inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05)
-  filter unquote("progid:DXImageTransform.Microsoft.gradient(enabled = false)")
-  text-align center
-  font-size 13px
-  font-weight bold
-  vertical-align middle
-  cursor pointer
-  line-height 18px
-  -webkit-touch-callout none
-  user-select none
+    display inline-block
+    margin-bottom 0 // For input.btn
+    padding 4px 10px 4px
+    border-radius radius
+    background-repeat repeat-x
+    box-shadow inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05)
+    filter unquote("progid:DXImageTransform.Microsoft.gradient(enabled = false)")
+    text-align center
+    font-size 13px
+    font-weight bold
+    vertical-align middle
+    cursor pointer
+    line-height 18px
+    -webkit-touch-callout none
+    user-select none
 
-  &:hover
-    background-position 0 -15px
-    transition background-position 0.1s linear
+    &:hover
+        background-position 0 -15px
+        transition background-position 0.1s linear
 
-  &:active,
-  &.active
-    background-image none
-    box-shadow inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05)
+    &:active,
+    &.active
+        background-image none
+        box-shadow inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05)
 
 
 // Button backgrounds
 // ------------------
 button-paint(color, color2 = color, text = false)
-  isDark = dark(color)
+    isDark = dark(color)
 
-  if color2 is color
-    colorHighlight = desaturate(color + 10%, 10%) if isDark
-    colorHighlight = saturate(color - 10%, 10%) unless isDark
-  else
-    colorHighlight = color2
-
-  border 1px solid #ccc
-  border-color color color darken(color, 15%)
-  border-color rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.5)
-  background-color color
-  background-image linear-gradient(top, color, colorHighlight)
-  filter s("progid:DXImageTransform.Microsoft.gradient(startColorstr='%s', endColorstr='%s', GradientType=0)", color, colorHighlight)
-  if text
-    color text
-    text-shadow 0 1px 1px rgba(invert(text), 0.75)
-  else
-    if isDark
-      color #fff
-      text-shadow 0 1px 1px rgba(0, 0, 0, 0.75)
+    if color2 is color
+        colorHighlight = desaturate(color + 10%, 10%) if isDark
+        colorHighlight = saturate(color - 10%, 10%) unless isDark
     else
-      color #333
-      text-shadow 0 1px 1px rgba(255, 255, 255, 0.75)
+        colorHighlight = color2
 
-  &:hover,
-  &.disabled,
-  &[disabled]
-    background-color colorHighlight
+    border 1px solid #ccc
+    border-color color color darken(color, 15%)
+    border-color rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.5)
+    background-color color
+    background-image linear-gradient(top, color, colorHighlight)
+    filter s("progid:DXImageTransform.Microsoft.gradient(startColorstr='%s', endColorstr='%s', GradientType=0)", color, colorHighlight)
+    if text
+        color text
+        text-shadow 0 1px 1px rgba(invert(text), 0.75)
+    else
+        if isDark
+            color #fff
+            text-shadow 0 1px 1px rgba(0, 0, 0, 0.75)
+        else
+            color #333
+            text-shadow 0 1px 1px rgba(255, 255, 255, 0.75)
 
-  &:hover,
-  &.hover
-    color (isDark ? #fff : #333)
-    text-decoration none
+    &:hover,
+    &.disabled,
+    &[disabled]
+        background-color colorHighlight
 
-  &:active,
-  &.active
-    background-color colorHighlight + 10%
+    &:hover,
+    &.hover
+        color (isDark ? #fff : #333)
+        text-decoration none
+
+    &:active,
+    &.active
+        background-color colorHighlight + 10%
 
 
 generate-buttons(scheme)
-  .btn
-    buttonize()
+    .btn
+        buttonize()
 
-    // Button Sizes
+        // Button Sizes
+        // --------------------------------------------------
+
+        // Large
+    .btn-large
+        padding 9px 14px
+        font-size $baseFontSize + 2px
+        line-height normal
+        border-radius 5px
+
+    .btn-large [class^="icon-"]
+        margin-top 1px
+
+
+    // Small
+    .btn-small
+        padding 5px 9px
+        font-size $baseFontSize - 2px
+        line-height $baseLineHeight - 2px
+
+    .btn-small [class^="icon-"]
+        margin-top -1px
+
+
+    // Mini
+    .btn-mini
+        padding 2px 6px
+        font-size $baseFontSize - 2px
+        line-height $baseLineHeight - 4px
+
+
+    // Alternate buttons
     // --------------------------------------------------
 
-    // Large
-  .btn-large
-    padding 9px 14px
-    font-size $baseFontSize + 2px
-    line-height normal
-    border-radius 5px
+    // Set the backgrounds
+    // -------------------------
+    .btn-primary
+        button-paint(scheme[0])
 
-  .btn-large [class^="icon-"]
-    margin-top 1px
+    .btn-secondary
+        button-paint(scheme[1])
 
+    .btn-tertiary
+        button-paint(scheme[2])
 
-  // Small
-  .btn-small
-    padding 5px 9px
-    font-size $baseFontSize - 2px
-    line-height $baseLineHeight - 2px
+    // Warning appears are orange
+    .btn-warning
+        button-paint($btnWarningBackground, $btnWarningBackgroundHighlight, #fff)
 
-  .btn-small [class^="icon-"]
-    margin-top -1px
+    // Danger and error appear as red
+    .btn-danger
+        button-paint($btnDangerBackground, $btnDangerBackgroundHighlight, #fff)
 
+    // Success appears as green
+    .btn-success
+        button-paint($btnSuccessBackground, $btnSuccessBackgroundHighlight, #fff)
 
-  // Mini
-  .btn-mini
-    padding 2px 6px
-    font-size $baseFontSize - 2px
-    line-height $baseLineHeight - 4px
+    // Info appears as a neutral blue
+    .btn-info
+        button-paint($btnInfoBackground, $btnInfoBackgroundHighlight, #fff)
 
-
-  // Alternate buttons
-  // --------------------------------------------------
-
-  // Set the backgrounds
-  // -------------------------
-  .btn-primary
-    button-paint(scheme[0])
-
-  .btn-secondary
-    button-paint(scheme[1])
-
-  .btn-tertiary
-    button-paint(scheme[2])
-
-  // Warning appears are orange
-  .btn-warning
-    button-paint($btnWarningBackground, $btnWarningBackgroundHighlight, #fff)
-
-  // Danger and error appear as red
-  .btn-danger
-    button-paint($btnDangerBackground, $btnDangerBackgroundHighlight, #fff)
-
-  // Success appears as green
-  .btn-success
-    button-paint($btnSuccessBackground, $btnSuccessBackgroundHighlight, #fff)
-
-  // Info appears as a neutral blue
-  .btn-info
-    button-paint($btnInfoBackground, $btnInfoBackgroundHighlight, #fff)
-
-  // Inverse appears as dark gray
-  .btn-inverse
-    button-paint($btnInverseBackground, $btnInverseBackgroundHighlight, #fff)
+    // Inverse appears as dark gray
+    .btn-inverse
+        button-paint($btnInverseBackground, $btnInverseBackgroundHighlight, #fff)
